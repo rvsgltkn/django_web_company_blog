@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+
+
+	<!-- /////////////////////////////////////////Content -->
+	<section class="box-content box-33 box-style-33 text-center">
+			<div class="container">
+				<div class="row">
+					   {% if banner_image %}
+                        <img src="image_upload/{{banner_image}}" title="">
+                    {% else %}
+					    <img src="static/images/about.jpg" title="">
+				    {% endif %}
+				</div>
+			</div>
+	</section>
+
+
+	<section class="box-content box-33 box-style-33 text-center">
+			<div class="container">
+				<div class="row">
+					<table style="height:500px; width:100%">
+
+						{% if posts %}
+                        <tr>
+                            <td colspan="2"><h1>{{posts.company_name}}</h1></td>
+                        </tr>
+                        <tr>
+                            <td><b>{% trans 'Tel' %}</b></td>
+                            <td>{{posts.tel}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>{% trans 'Address' %}</b></td>
+                            <td>{{posts.address}}</td>
+                        </tr>
+						<tr>
+							<td colspan="2" valign="top" >
+                                {{ posts.description | safe }}
+							</td>
+						</tr>
+                        {% endif %}
+					</table>
+				</div>
+			</div>
+	</section>
+
+
+
+{% endblock %}

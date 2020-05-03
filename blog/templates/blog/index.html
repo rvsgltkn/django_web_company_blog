@@ -1,0 +1,159 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+
+	<!-- CAROUSEL -->
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="4000">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+            {% for post in index_posts %}
+                {% if forloop.first %}
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                {% else %}
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                {% endif %}
+            {% endfor %}
+		</ol>
+
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner">
+			{% for post in index_posts %}
+                {% if forloop.first %}
+                    <div class="item active">
+                        <img src="image_upload/{{post.image_url}}" alt="...">
+                        <!-- Static Header -->
+                        <div class="header-text">
+                            <div class="col-md-12 text-center">
+                                <h1>{{ post.title }} </h1>
+                                <hr>
+                                <p>{{ post.introduction }} </p>
+                                <a href="index_detail?pk={{post.id}}" class="btn btn-header">{% trans 'Learn More' %}</a>
+                            </div>
+                        </div><!-- /header-text -->
+                    </div>
+                {% else %}
+                    <div class="item">
+                            <img src="image_upload/{{post.image_url}}" alt="...">
+                            <!-- Static Header -->
+                            <div class="header-text">
+                                <div class="col-md-12 text-center">
+                                    <h1>{{ post.title }} </h1>
+                                    <hr>
+                                    <p>{{ post.introduction }} </p>
+                                    <a href="index_detail?pk={{post.id}}" class="btn btn-header">{% trans 'Learn More' %}</a>
+                                </div>
+                            </div><!-- /header-text -->
+                        </div>
+                {% endif %}
+			{% endfor %}
+		</div>
+
+		<!-- Controls -->
+		<!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">-->
+			<!--<span class="glyphicon glyphicon-chevron-left"></span>-->
+		<!--</a>-->
+		<!--<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">-->
+			<!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+		<!--</a>-->
+	</div> <!-- Carousel -->
+	<!-- /////////////////////////////////////////Content -->
+	<div id="page-content">
+
+		<!-- ////////////Content Box 02 -->
+		<section class="box-content box-2 box-style-1" id="services">
+			<div class="container">
+					<div class="row " >
+                        {% for post in service_posts %}
+							<div class="col-lg-4">
+								<div class="service-box">
+									<a href="services?pk={{post.id}}"><img src="image_upload/{{post.image_url}}" title="icon-name"></a>
+									<h3>{{ post.title }}</h3>
+									<p class="text-muted">{{post.introduction}}</p>
+									<a href="services?pk={{post.id}}" class="btn btn-skin">{% trans 'Read more' %}</a>
+								</div>
+							</div>
+                        {% endfor %}
+
+							<!--<div class="col-lg-4">-->
+								<!--<div class="service-box">-->
+									<!--<a href="#"><img src="static/images/service2.jpg" title="icon-name"></a>-->
+									<!--<h3>WATER BAREHOLE DRILLING</h3>-->
+									<!--<p class="text-muted">Service Description</p>-->
+									<!--<a href="#" class="btn btn-skin">Read more</a>-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="col-lg-4">-->
+								<!--<div class="service-box">-->
+									<!--<a href="#"><img src="static/images/service3.jpg" title="icon-name"></a>-->
+									<!--<h3>SUPPLY AND INSTALLATION</h3>-->
+									<!--<p class="text-muted">Service Description</p>-->
+									<!--<a href="#" class="btn btn-skin">Read more</a>-->
+								<!--</div>-->
+							<!--</div>-->
+					</div>
+			</div>
+		</section>
+
+		<!-- ////////////Content Box 03 -->
+		<!--<section class="box-content box-3 box-style-2 text-center" id="news">-->
+			<!--<div class="container">-->
+				<!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+					<!--&lt;!&ndash;<p>For Best Quality...</p>&ndash;&gt;-->
+				<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--</div>-->
+		<!--</section>-->
+
+		<!-- ////////////Content Box 04 -->
+		<section class="box-content box-4 box-style-3 text-center" id="testimonials">
+			<div class="container">
+				<div class="row heading">
+                        <h2>{% trans 'Testimonials' %}</h2>
+				</div>
+				<div class="row">
+					<div class="testimonials">
+						<div id="owl-test" class="owl-carousel">
+                            {% for post in testimonial_posts %}
+                                <div class="col-md-12">
+                                    <div class="item box-item">
+                                        <img src="image_upload/{{post.image_url}}" class="img-circle" />
+                                        <h5>{{post.customer}}</h5>
+                                        <p>{{post.description}}</p>
+                                        <!--<span>Georgia</span>-->
+                                    </div>
+                                </div>
+                            {% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ////////////Content Box 05 -->
+		<section class="box-content box-5" id="gallery">
+			<div class="container">
+				<div class="row heading">
+	                    <h2 style="color: #367369;">{% trans 'GALLERY' %}</h2>
+				</div>
+			</div>
+			<div class="no-gutter">
+				<div id="owl-brand" class="owl-carousel">
+                    {% for post in gallery_posts %}
+                        <div class="item">
+                            <a href="#" class="portfolio-box">
+                                <img src="image_upload/{{post.image_url}}" class="img-responsive" alt="">
+                                <div class="portfolio-box-caption">
+                                    <div class="portfolio-box-caption-content">
+                                        <div class="project-name">
+                                            {{post.title}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+				</div>
+			</div>
+		</section>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+
+	<!-- /////////////////////////////////////////Content -->
+	<section class="box-content box-33 box-style-33 text-center">
+			<div class="container">
+				<div class="row">
+					{% if banner_image %}
+                        <img src="image_upload/{{banner_image}}" title="">
+                    {% else %}
+					    <img src="static/images/service_banner.jpg" title="">
+				    {% endif %}
+				</div>
+			</div>
+	</section>
+
+
+	<section class="box-content box-33 box-style-33 text-center">
+			<div class="container">
+				<div class="row">
+					<table style="height:500px; width:100%">
+						<tr>
+							<td valign="top" style="width:200px;">
+								<table>
+									{% for item in posts %}
+									<tr>
+										<td style="padding-bottom:5px;">
+											<a href="#" class="btnabout btn-skin" onclick="changeContent('{{item.description|escapejs}}');">{{item.title}}</a>
+										</td>
+									</tr>
+                                    {% endfor %}
+								</table>
+							</td>
+							<td valign="top" >
+								<div id="divaboutcontent">
+									{% if posts %}
+										{% if post_detail %}
+                                        	{{ post_detail.first.description | safe }}
+										{% else %}
+											{{ posts.first.description | safe }}
+										{% endif %}
+                                    {% endif %}
+                                </div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+	</section>
+
+
+
+{% endblock %}
