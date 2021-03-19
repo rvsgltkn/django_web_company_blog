@@ -4,7 +4,7 @@ psycopg2-binary==2.8.4
 pytz==2019.3
 sqlparse==0.3.0
 whitenoise==5.0.1
-Pillow==7.1.2
+Pillow==8.1.1
 patterns==0.3
 django-tinymce==3.0.2
 django-js-asset==1.2.2
